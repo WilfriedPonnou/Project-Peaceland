@@ -12,6 +12,9 @@ Furthermore, from a financial point of view, using a data lake is interesting, b
 2)What business constraint should the architecture meet to fulfill the requirement describe in the 
 paragraph «Alert»? Which component to choose?
 
+In order to fulffill the requirements described in paragraoh "alerts":
+Fast alert trigerring from the data sent by the drones, in order for peacemakers to react as fast as possible
+=> We must use a Streaming component to get real time data from peacewatchers and analyze them.
 
 
 3)What mistake(s) from Peaceland can explain the failed attempt?
