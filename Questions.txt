@@ -1,0 +1,23 @@
+Preliminary questions
+
+1)What technical/business constraints should the data storage component of theprogram 
+architecture meet to fulfill the requirement described by the customer inparagraph «Statistics»?
+So what kind of component(s) (listed in the lecture) will the architecture need?
+
+The customer wants to save the data for later statistics, therefore, you need to save the data indefinitely. 
+We also know that the sum of  all daily report weights is 200Go. 
+So we conclude that  data storage needs to be a data lake as it can store  data permanently and is suitable for storing large amounts of data. 
+Furthermore, from a financial point of view, using a data lake is interesting, by using cloud data lakes for example.
+
+2)What business constraint should the architecture meet to fulfill the requirement describe in the 
+paragraph «Alert»? Which component to choose?
+
+
+
+3)What mistake(s) from Peaceland can explain the failed attempt?
+
+
+
+4)Peaceland has likely forgotten some technical information in the report sent by the drone. 
+In the future, this information could help Peaceland make its peacewatchers much more efficient. Which information?
+
