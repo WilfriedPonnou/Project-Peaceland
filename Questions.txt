@@ -19,8 +19,16 @@ Fast alert trigerring from the data sent by the drones, in order for peacemakers
 
 3)What mistake(s) from Peaceland can explain the failed attempt?
 
+The mistake made by Peaceland is that they hired data scientist only for a big data project 
+which needs in rzality more people, such as data engineers data analysts, devops.
+Indeed data scientist are only efficient for the prediction part/ data analysis part.
+Thus they are'nt effeicient to make a suitable data architecture for this project.
 
 
 4)Peaceland has likely forgotten some technical information in the report sent by the drone. 
 In the future, this information could help Peaceland make its peacewatchers much more efficient. Which information?
+
+The information which has been forgotten is the date.
+Indeed the date is an important information, especially if you want to make statistics afterwards you collected data.
+To make predictions in the future ( for example, dates when people are more able to not be peacceful)
 
