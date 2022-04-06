@@ -14,8 +14,6 @@ libraryDependencies += "com.github.pjfanning" %% "scala-faker" % "0.5.3"
 // https://mvnrepository.com/artifact/commons-io/commons-io
 libraryDependencies += "commons-io" % "commons-io" % "2.4"
 
-// https://mvnrepository.com/artifact/org.apache.spark/spark-core
-//libraryDependencies += "org.apache.spark" %% "spark-core" % "3.1.1"
 
-// https://github.com/tototoshi/scala-csv
-libraryDependencies += "com.github.tototoshi" %% "scala-csv" % "1.3.8"
+libraryDependencies += "org.slf4j" % "slf4j-simple" % "2.0.0-alpha1"
+
