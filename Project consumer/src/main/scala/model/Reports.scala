@@ -31,10 +31,12 @@ object Reports{
   def stringToReport(s: String): Reports = {
     val reportAttributes = s.split(";")
 
-    Reports(reportAttributes(0).toInt, reportAttributes(1).toDouble, reportAttributes(2).toDouble,
-      reportAttributes(3).split(",").toList.map(citizenData=>Citizen.stringToCitizen(citizenData)),
-      reportAttributes(4).split(",").toList,
-      reportAttributes(5).toLong)
+    Reports(reportAttributes(0).toInt, 
+            reportAttributes(1).toDouble, 
+            reportAttributes(2).toDouble,
+            reportAttributes(3).split(",").toList.map(citizenData=>Citizen.stringToCitizen(citizenData)),
+            reportAttributes(4).split(",").toList,
+            reportAttributes(5).toLong)
   }
 
 }
