@@ -45,10 +45,10 @@ object KafkaAlerterService extends App{
   )
 
   val badCitizens=stream.map{record => (record.key(), record.value)}
-                         .map(records=>records._2) 
-                         .map(record=>Reports.stringToReport(record))
-                         .map(reports=>(reports.lat,reports.lon,reports.data.filter(_.citizenPeacescore<20)))
-                         .filter(_._3.nonEmpty)
+                        .map(records=>records._2)
+                        .map(record=>Reports.stringToReport(record))
+                        .map(reports=>(reports.lat,reports.lon,reports.data.filter(_.citizenPeacescore<20)))
+                        .filter(_._3.nonEmpty)
 
   println("\n\n")
   println("   #    #       ####### ######  #######  #####  ")

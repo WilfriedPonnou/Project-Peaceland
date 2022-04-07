@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 
 case class Reports(peaceWatcherId: Int, lat: Double, lon: Double, data: List[Citizen], words: List[String], date: Long){}
 
-object Reports{ 
+object Reports{
   def createRandomReport() = {
 
     val r = new Random();
@@ -23,18 +23,21 @@ object Reports{
 
   }
   def stringifyReport(r: Reports) : String ={
-    val citizens = r.data.map(citizen=> citizen.citizenName +":"+citizen.citizenPeacescore).mkString(",")
+    val citizens = r.data.map(citizen=> citizen.citizenName +":"+citizen.citizenPeacescore)
+      .mkString(",")
     val words = r.words.mkString(",")
     val stringReport = r.peaceWatcherId + ";" + r.lat + ";" + r.lon + ";" + citizens + ";" + words + ";" + r.date
     stringReport
   }
   def stringToReport(s: String): Reports = {
     val reportAttributes = s.split(";")
-    
-    Reports(reportAttributes(0).toInt, reportAttributes(1).toDouble, reportAttributes(2).toDouble, 
-    reportAttributes(3).split(",").toList.map(citizenData=>Citizen.stringToCitizen(citizenData)),
-    reportAttributes(4).split(",").toList,
-    reportAttributes(5).toLong)
+
+    Reports(reportAttributes(0).toInt,
+      reportAttributes(1).toDouble,
+      reportAttributes(2).toDouble,
+      reportAttributes(3).split(",").toList.map(citizenData=>Citizen.stringToCitizen(citizenData)),
+      reportAttributes(4).split(",").toList,
+      reportAttributes(5).toLong)
   }
 
 }

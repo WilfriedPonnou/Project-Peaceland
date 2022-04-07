@@ -4,9 +4,9 @@ import model.Citizen
 import faker._
 import java.time.LocalDateTime
 
-case class Reports(peaceWatcherId: Int, lat: Double, lon: Double, data: List[Citizen], words: List[String], date: String){}
+case class Reports(peaceWatcherId: Int, lat: Double, lon: Double, data: List[Citizen], words: List[String], date: Long){}
 
-object Reports{ 
+object Reports{
   def createRandomReport() = {
 
     val r = new Random();
@@ -17,28 +17,24 @@ object Reports{
     val citizens = List.fill(nbCitizen)(Citizen.createRandomCitizen())
     val nbWord = 2 + r.nextInt(10)
     val wordsHeards = Lorem.words(nbWord)
-    val arrayOfDay = Array("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
-    val randomDayOfTheWeek = r.nextInt(7)
-    val dayOfTheWeek = arrayOfDay(randomDayOfTheWeek)
-    val randomHour = r.nextInt(24)
-    val hour = randomHour.toString
-    val strDay = dayOfTheWeek + ":" + hour
+    val strDay = 10000 + r.nextLong()
 
     Reports(id, latitude, longitude, citizens, wordsHeards, strDay)
 
   }
   def stringifyReport(r: Reports) : String ={
-    val citizens = r.data.mkString(",")
+    val citizens = r.data.map(citizen=> citizen.citizenName +":"+citizen.citizenPeacescore).mkString(",")
     val words = r.words.mkString(",")
     val stringReport = r.peaceWatcherId + ";" + r.lat + ";" + r.lon + ";" + citizens + ";" + words + ";" + r.date
     stringReport
   }
   def stringToReport(s: String): Reports = {
     val reportAttributes = s.split(";")
-    Reports(reportAttributes(0).toInt, reportAttributes(1).toDouble, reportAttributes(2).toDouble, 
-    reportAttributes(3).split(",").toList.map(citizenData=>Citizen.stringToCitizen(citizenData)),
-    reportAttributes(4).split(",").toList,
-    reportAttributes(5))
+
+    Reports(reportAttributes(0).toInt, reportAttributes(1).toDouble, reportAttributes(2).toDouble,
+      reportAttributes(3).split(",").toList.map(citizenData=>Citizen.stringToCitizen(citizenData)),
+      reportAttributes(4).split(",").toList,
+      reportAttributes(5).toLong)
   }
 
 }

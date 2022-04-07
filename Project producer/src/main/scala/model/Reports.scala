@@ -17,18 +17,14 @@ object Reports{
     val citizens = List.fill(nbCitizen)(Citizen.createRandomCitizen())
     val nbWord = 2 + r.nextInt(10)
     val wordsHeards = Lorem.words(nbWord)
-    //val arrayOfDay = Array("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
-    //val randomDayOfTheWeek = r.nextInt(7)
-    //val dayOfTheWeek = arrayOfDay(randomDayOfTheWeek)
-    //val randomHour = r.nextInt(24)
-    //val hour = randomHour.toString
-    val strDay = r.nextLong()
+    val strDay = r.nextLong(1513714678)
 
     Reports(id, latitude, longitude, citizens, wordsHeards, strDay)
 
   }
   def stringifyReport(r: Reports) : String ={
-    val citizens = r.data.map(citizen=> citizen.citizenName +":"+citizen.citizenPeacescore).mkString(",")
+    val citizens = r.data.map(citizen=> citizen.citizenName +":"+citizen.citizenPeacescore)
+                         .mkString(",")
     val words = r.words.mkString(",")
     val stringReport = r.peaceWatcherId + ";" + r.lat + ";" + r.lon + ";" + citizens + ";" + words + ";" + r.date
     stringReport
@@ -36,10 +32,12 @@ object Reports{
   def stringToReport(s: String): Reports = {
     val reportAttributes = s.split(";")
     
-    Reports(reportAttributes(0).toInt, reportAttributes(1).toDouble, reportAttributes(2).toDouble, 
-    reportAttributes(3).split(",").toList.map(citizenData=>Citizen.stringToCitizen(citizenData)),
-    reportAttributes(4).split(",").toList,
-    reportAttributes(5).toLong)
+    Reports(reportAttributes(0).toInt,
+            reportAttributes(1).toDouble,
+            reportAttributes(2).toDouble,
+            reportAttributes(3).split(",").toList.map(citizenData=>Citizen.stringToCitizen(citizenData)),
+            reportAttributes(4).split(",").toList,
+            reportAttributes(5).toLong)
   }
 
 }
