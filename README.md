@@ -10,6 +10,6 @@
 ### On another terminal:
 ```bin/kafka-topics.sh --create --topic peaceWatcherReport --bootstrap-server localhost:9092```
 
-### Then run
+### Then run , in each project in this order : producer, consumer , alerter, analyzer:
 ```sbt run```
-### In each project in this order : producer, consumer , alerter, analyzer
+
